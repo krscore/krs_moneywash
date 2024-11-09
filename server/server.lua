@@ -10,6 +10,6 @@ RegisterNetEvent('krs_moneywash:washAmount', function(amount)
         Wait(cfg.washDuration)
         exports.ox_inventory:AddItem(source, 'money', total)
     else
-        TriggerClientEvent('krs_notify:Alert', source, "NOTIFY", "You do not have enough dirty money.", 4000, 'error')
+        TriggerClientEvent('ox_lib:notify', source, { title = 'Krs Moneywash', description = 'You do not have enough dirty money.', type = 'error'})
     end
 end)
