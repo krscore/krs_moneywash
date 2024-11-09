@@ -1,14 +1,16 @@
-fx_version 'cerulean'
-game 'gta5'
-lua54 'yes'
-
+fx_version "cerulean"
+use_fxv2_oal "yes"
+lua54 "yes"
+game "gta5"
+version "1.0.0"
+description "A simple moneywash system"
 name 'krs_moneywash'
-author 'Karos#7804'
+author "karos7804"
 
-shared_scripts { 
-
-	'@ox_lib/init.lua',
-	'shared/*.lua'
+shared_scripts {
+    '@es_extended/imports.lua',
+    '@ox_lib/init.lua',
+    'shared/*.lua'
 }
 
 client_scripts {	
@@ -16,7 +18,6 @@ client_scripts {
 }
 
 server_scripts {
-	
 	'server/*.lua'
 }
 
@@ -25,7 +26,6 @@ files {
 }
 
 dependencies {
-	
 	'ox_lib',
 	'ox_inventory'
 }
