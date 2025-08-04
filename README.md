@@ -1,54 +1,80 @@
-# krs_moneywash
+# 🧼 Money Wash System for FiveM
 
-📜 **Script Description**  
-The **`krs_moneywash`** script introduces a dynamic system for laundering dirty money in your RP server. Players can clean their illegal earnings at specific locations, following realistic and immersive mechanics.  
-
----
-
-🔧 **Main Features**  
-1️⃣ **Money Laundering System**  
-- Players can launder dirty money (`black_money`) at designated locations.  
-- A percentage of the dirty money is deducted as a laundering fee (default: 50%).  
-- The remaining clean money (`money`) is added to the player's inventory.  
-
-2️⃣ **Custom Interaction Zones**  
-- Laundering is only possible at **specific locations marked with map blips**.  
-- Players interact by approaching the marker and pressing the interaction key (default: `E`).  
-
-3️⃣ **Realistic Waiting Times**  
-- After completing a laundering operation, players must wait 1 minute before laundering more money.  
-- Laundering takes a configurable amount of time (default: 30 seconds).  
-
-4️⃣ **Immersive Animations & Notifications**  
-- Players perform a smoking animation while laundering money.  
-- Custom notifications inform players about the start, progress, and completion of the laundering process.  
+A simple and immersive money laundering system compatible with `ox_inventory` and `ox_lib`. Players can interact with one or more configurable zones on the map to convert dirty money into clean money, with progress bar, animation, and notifications.
 
 ---
 
-💡 **Additional Features**  
-- **Blip System**: Configurable blips to indicate laundering locations on the map.  
-- **Progress Bar**: A progress circle appears during laundering to show the remaining time.  
-- **Input Dialog**: Players can specify the amount of dirty money to launder through an input menu.  
-- **Automatic Validation**: The system automatically checks if the player has enough `black_money` before starting the laundering process.  
-- **Localized Messages**: Uses a localization system for customizable texts in different languages.  
+## ✨ Features
+
+* 💰 Direct interaction to start washing (no commands required)
+* 📍 Supports multiple configurable map locations
+* 📊 Progress bar with animation (`WORLD_HUMAN_AA_SMOKE`)
+* 🔒 Controls are disabled during the process
+* 🕒 Cooldown system to prevent abuse
+* 🔔 Notifications via `ox_lib`
+* 📦 Fully integrated with `ox_inventory`
 
 ---
 
-🎯 **Why Use It?**  
-This script adds depth to the criminal economy on your server, providing players with a realistic way to clean dirty money. It integrates seamlessly with inventory systems like `ox_inventory` and delivers an immersive RP experience. Perfect for enhancing the illegal activities on your server! 🕵️‍♂️💸  
+## 💡 How It Works
 
-* Simple Washing Money
+1. The player approaches a money wash zone.
+2. Pressing `E` opens a dialog to enter the amount of dirty money to launder.
+3. If the player has enough `black_money`, the animation and progress bar begin.
+4. When complete, clean money (minus the configured percentage) is added.
+5. The player must wait before starting another wash.
 
-* Install
-* ensure krs_moneywash into to server.cfg
+---
 
-*Dependencies:*
-- ox_lib
-- ox_inventory
+## ⚙️ Configuration
 
-* Youtube
-[**Preview**](https://www.youtube.com/watch?v=l7ViZvBJ8R0)
+All parameters can be customized in the `config.lua` file:
 
+```lua
+cfg.waitRewashing = 60000 -- Cooldown: player must wait 1 minute between washes
+cfg.washDuration = 30000  -- Duration of the washing process (30 seconds)
+cfg.percentage = 0.50     -- Percentage removed (e.g. 50%)
+cfg.iconDialog = 'fa-solid fa-sack-dollar' -- Icon for the dialog UI
+cfg.positionProgress = 'middle' -- Position of the progress bar
+cfg.positionWashing = {
+    {
+        coords = vector3(637.0958, 2784.7517, 42.0103),
+        active = true,
+        sprite = 500,
+        name = 'Money Wash' -- Blip name
+    }
+    -- You can add more locations here
+}
+```
 
-![Screenshot 2024-11-21 201018](https://github.com/user-attachments/assets/570e4b59-190d-4186-8bd3-4df2423b25fe)
+---
 
+## 🗺️ Gameplay
+
+* 🧭 Approach a wash zone (blip shown on the map)
+* ⌨️ Press `E` to open the dialog
+* 🔢 Enter the amount of money to wash
+* ⏳ Wait until the progress bar completes
+
+---
+
+## 📦 Installation
+
+1. 📁 Place the script folder (`krs_moneywash`) inside your `resources/` directory.
+
+2. 🧩 Add the resource to your `server.cfg`:
+
+   ```cfg
+   ensure krs_moneywash
+   ```
+
+3. ⚠️ Make sure `ox_lib` and `ox_inventory` are installed and started before this script.
+
+4. 🚀 Restart your server and test the system in-game!
+
+---
+
+## ✅ Requirements
+
+* [ox\_lib](https://github.com/overextended/ox_lib)
+* [ox\_inventory](https://overextended.dev/ox_inventory)
