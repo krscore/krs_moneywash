@@ -8,7 +8,6 @@ name 'krs_moneywash'
 author "karos7804"
 
 shared_scripts {
-    '@es_extended/imports.lua',
     '@ox_lib/init.lua',
     'shared/*.lua'
 }
@@ -29,3 +28,4 @@ dependencies {
 	'ox_lib',
 	'ox_inventory'
 }
+
